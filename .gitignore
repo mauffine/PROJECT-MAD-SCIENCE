@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+DefenceGame/Library/
+
+DefenceGame/Builds/
