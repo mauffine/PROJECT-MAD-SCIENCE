@@ -24,7 +24,7 @@ GameObject:
   - 61: {fileID: 61361265208089668}
   - 257: {fileID: 257903245388276424}
   - 114: {fileID: 114790811683683480}
-  - 114: {fileID: 114495536434259590}
+  - 114: {fileID: 114000013321543804}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -76,7 +76,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 16, y: 32}
---- !u!114 &114495536434259590
+--- !u!114 &114000013321543804
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -84,11 +84,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1034500917159176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed8cc6830959234ea89e9e0a5671058, type: 3}
+  m_Script: {fileID: 11500000, guid: c325d54f1b5465a4cac7de08bd87b063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 150
-  Mass: 500
+  _health: 500
+  _mass: 1
+  _damage: 0
+  _speed: 1
+  _points: 0
+  _left: 1
 --- !u!114 &114790811683683480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e184639b3caf4524e8a8c80b56754d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrabbed: 0
   JointMaxForce: 8000
 --- !u!212 &212791923759864324
 SpriteRenderer:

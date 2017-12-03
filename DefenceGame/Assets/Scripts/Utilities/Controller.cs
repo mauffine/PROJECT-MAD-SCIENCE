@@ -13,15 +13,14 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     //Booleaans
-    private bool IsOver = false;
-    private bool IsGrabbed = false;
+    private bool isOver = false;
+    public bool isGrabbed = false;
     //Mouse position vectors
     private Vector2 MousePositionWorldSpace;
-    private Vector2 MousePosition2D;
     //TargetJoint.
     private TargetJoint2D TG = null;
     public float JointMaxForce = 8000;
-
+    
     // Update is called once per frame
     private void Start()
     {
@@ -33,8 +32,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         //Update the mouse position
-        MousePosition2D = Input.mousePosition;
-        MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(MousePosition2D);
+        MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //if(Input.touchCount > 0)
         //{
@@ -54,7 +52,7 @@ public class Controller : MonoBehaviour
 
 
 
-        if (IsGrabbed)
+        if (isGrabbed)
         {
             //Set the targetjoint's target
             TG.target = MousePositionWorldSpace;
@@ -63,9 +61,9 @@ public class Controller : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(IsOver) //Pick the object up if it can be picked up
+        if(isOver) //Pick the object up if it can be picked up
         {
-            IsGrabbed = true;
+            isGrabbed = true;
             TG.enabled = true;
             TG.anchor = MousePositionWorldSpace - (Vector2)transform.position;
         }
@@ -73,9 +71,9 @@ public class Controller : MonoBehaviour
 
     void OnMouseUp()
     {
-        if(IsGrabbed) //release the object if it has-been/is picked up.
+        if(isGrabbed) //release the object if it has-been/is picked up.
         {
-            IsGrabbed = false;
+            isGrabbed = false;
             TG.enabled = false;
         }
     }
@@ -83,10 +81,10 @@ public class Controller : MonoBehaviour
     //IsOver governs whether or not the object can be picked up.
     private void OnMouseEnter()
     {
-        IsOver = true;
+        isOver = true;
     }
     private void OnMouseExit()
     {
-        IsOver = false;
+        isOver = false;
     }
 }
