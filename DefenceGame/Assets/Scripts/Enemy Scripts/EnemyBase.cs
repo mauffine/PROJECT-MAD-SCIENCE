@@ -39,7 +39,7 @@ public class EnemyBase : MonoBehaviour
     }
     virtual protected void Update()
     {
-        if (!this.gameObject.GetComponent<Controller>().isGrabbed)
+        if (!gameObject.GetComponent<Controller>().isGrabbed && gameObject.GetComponent<Controller>().isGrounded)
             Move();
         
     }
