@@ -97,6 +97,8 @@ public class EnemyBase : MonoBehaviour
         else if (_getUpTicker < 0)
         {
             _getUpTicker = _getUpDelay;
+            gameObject.transform.position += new Vector3(0, .05f, 0);
+            gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
             return true;
         }
         return false;

@@ -39,4 +39,8 @@ DefenceGame/Builds/
 
 DefenceGame/.vs/
 
+*DefenceGame/Temp/
+
 *.lock
+
+*.backup

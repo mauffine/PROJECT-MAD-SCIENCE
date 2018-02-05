@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4557220791358274}
   - component: {fileID: 212791923759864324}
   - component: {fileID: 50845222395560704}
-  - component: {fileID: 61361265208089668}
   - component: {fileID: 257903245388276424}
   - component: {fileID: 114790811683683480}
   - component: {fileID: 114000013321543804}
+  - component: {fileID: 70038449362652270}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Lane1
@@ -64,9 +64,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!61 &61361265208089668
-BoxCollider2D:
+  m_Constraints: 0
+--- !u!70 &70038449362652270
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -78,18 +78,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 32}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 16, y: 32}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!114 &114000013321543804
 MonoBehaviour:
   m_ObjectHideFlags: 1
