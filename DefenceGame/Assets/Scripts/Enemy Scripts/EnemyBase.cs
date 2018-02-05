@@ -23,25 +23,35 @@ public class EnemyBase : MonoBehaviour
     protected float _speed;
     [SerializeField]
     protected float _points;
+    [SerializeField]
+    protected float _getUpTicker;
+    [SerializeField]
+    protected float _getUpDelay = 2;
+    [SerializeField]
+    protected float velocity;
     //bools
     //Has the first collision occured?
     protected bool _firstcollision = false; 
     [SerializeField]
     protected bool _left = true;
 
-    Rigidbody2D _rb;
+    protected Controller _controller;
+
+    protected Rigidbody2D _rb;
     // Use this for initialization
     protected void Start()
     {
         //Set the rigidbodys mass
         _rb = gameObject.GetComponent<Rigidbody2D>();
         _rb.mass = _mass;
+        _controller = gameObject.GetComponent<Controller>();
+        _getUpTicker = _getUpDelay;
     }
     virtual protected void Update()
     {
-        if (!gameObject.GetComponent<Controller>().isGrabbed && gameObject.GetComponent<Controller>().isGrounded)
+        if (!_controller.isGrabbed && _controller.isGrounded)
             Move();
-        
+        velocity = _rb.velocity.magnitude;
     }
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -77,5 +87,18 @@ public class EnemyBase : MonoBehaviour
         {
             _rb.MovePosition(transform.position += new Vector3(_speed * -Time.deltaTime, 0, 0));
         }
+    }
+    protected bool CheckGetUp()
+    {
+        if (_rb.velocity.magnitude < .2 && !_controller.canWalk && _getUpTicker >= 0)
+        {
+            _getUpTicker -= Time.deltaTime;
+        }
+        else if (_getUpTicker < 0)
+        {
+            _getUpTicker = _getUpDelay;
+            return true;
+        }
+        return false;
     }
 }

@@ -36,3 +36,7 @@ sysinfo.txt
 DefenceGame/Library/
 
 DefenceGame/Builds/
+
+DefenceGame/.vs/
+
+*.lock

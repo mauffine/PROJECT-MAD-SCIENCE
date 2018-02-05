@@ -6,8 +6,10 @@ public class BasicEnemy : EnemyBase {
 	void Update () {
         if (_health <= 0)
             Die();
-        if (!gameObject.GetComponent<Controller>().isGrabbed && gameObject.GetComponent<Controller>().isGrounded)
+        if (!_controller.isGrabbed && _controller.isGrounded && _controller.canWalk)
             Move();
+        else if (!_controller.isGrabbed && _controller.isGrounded && !_controller.canWalk)
+            _controller.canWalk = CheckGetUp();
     }
 
 }
