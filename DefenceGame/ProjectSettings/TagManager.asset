@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Lane1
   - Lane2
-  - Lan3
+  - Lane3
   layers:
   - Default
   - TransparentFX
