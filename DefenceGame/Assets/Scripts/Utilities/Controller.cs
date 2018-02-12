@@ -16,6 +16,7 @@ public class Controller : MonoBehaviour
     private bool isOver = false;
     public bool isGrabbed = false;
     public bool isGrounded = false;
+    public bool canWalk = true;
     //Mouse position vectors
     private Vector2 MousePositionWorldSpace;
     //TargetJoint.
@@ -35,18 +36,17 @@ public class Controller : MonoBehaviour
         string layerName = LayerMask.LayerToName(9);
         //Update the mouse position
         MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, Mathf.Infinity, 9);
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, .5f, 9);
         if (hit.collider != null && hit.collider.CompareTag(gameObject.tag))
         {
             isGrounded = true;
-            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.green, .5f, true);
+            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.green, .25f, true);
         }
         else
         {
             isGrounded = false;
-            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.red, .5f, true);
+            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.red, .25f, true);
         }
-        
         //if(Input.touchCount > 0)
         //{
         //    if(Input.GetTouch(0).phase == TouchPhase.Began)
@@ -77,8 +77,9 @@ public class Controller : MonoBehaviour
         if(isOver) //Pick the object up if it can be picked up
         {
             isGrabbed = true;
+            canWalk = false;
             TG.enabled = true;
-            TG.anchor = MousePositionWorldSpace - (Vector2)transform.position;
+            TG.anchor = MousePositionWorldSpace - (Vector2)transform.position + Vector2.up * 2f;
         }
     }
 

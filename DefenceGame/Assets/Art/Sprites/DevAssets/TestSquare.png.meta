@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: d73d153e4b7ca97459894fa14d954a92
-timeCreated: 1501920670
+guid: 171aa16d689e168448e68ea868dec10f
+timeCreated: 1501831041
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
-  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -49,7 +48,7 @@ TextureImporter:
   spritePixelsToUnits: 4
   alphaUsage: 1
   alphaIsTransparency: 0
-  spriteTessellationDetail: 0.23
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
@@ -58,37 +57,57 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline:
-    - - {x: -32, y: -64}
-      - {x: -32, y: 64}
-      - {x: 32, y: 64}
-      - {x: 32, y: -64}
+    - - {x: -2, y: -2}
+      - {x: -2, y: 2}
+      - {x: 2, y: 2}
+      - {x: 2, y: -2}
     physicsShape:
-    - - {x: 22.694897, y: -63.305103}
-      - {x: 20.90409, y: -10.1368065}
-      - {x: 29.378574, y: -1.8418388}
-      - {x: 28.683678, y: 32}
-      - {x: 8.745926, y: 64}
-      - {x: -13.514296, y: 64}
-      - {x: -32, y: 36.977562}
-      - {x: -31.305103, y: 1.5703964}
-      - {x: -23.378574, y: -14.453129}
-      - {x: -23.011219, y: -64}
-      - {x: -6, y: -64}
-      - {x: -5.095909, y: -16.317406}
-      - {x: 3.3897934, y: -16.368439}
-      - {x: 4, y: -64}
+    - - {x: -2, y: -2}
+      - {x: -2, y: 2}
+      - {x: 2, y: 2}
+      - {x: 2, y: -2}
   spritePackingTag: 
   userData: 
   assetBundleName: 
