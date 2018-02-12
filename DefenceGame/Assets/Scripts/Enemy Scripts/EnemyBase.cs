@@ -10,7 +10,6 @@ using UnityEngine;
 using Utilities;
 public class EnemyBase : MonoBehaviour
 {
-
     protected EnemyUtilities _enemyUtilites = new EnemyUtilities();
     //floats
     [SerializeField]
@@ -33,7 +32,7 @@ public class EnemyBase : MonoBehaviour
     //Has the first collision occured?
     protected bool _firstcollision = false; 
     [SerializeField]
-    protected bool _left = true;
+    public bool _left = true;
 
     protected Controller _controller;
 
