@@ -7,6 +7,7 @@ TagManager:
   - Lane1
   - Lane2
   - Lane3
+  - GateTrigger
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Enemy
   - Platform
-  - 
+  - GateTrigger
   - 
   - 
   - 

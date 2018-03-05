@@ -17,12 +17,13 @@ public class Controller : MonoBehaviour
     public bool isGrabbed = false;
     public bool isGrounded = false;
     public bool canWalk = true;
+    public bool canAttack = false;
     //Mouse position vectors
     private Vector2 MousePositionWorldSpace;
     //TargetJoint.
     private TargetJoint2D TG = null;
     public float JointMaxForce = 8000;
-    
+    private Vector2 moveCameraPos;
     // Update is called once per frame
     private void Start()
     {
@@ -100,5 +101,9 @@ public class Controller : MonoBehaviour
     private void OnMouseExit()
     {
         isOver = false;
+    }
+    void MoveCamera(Vector2 moveCaermaPos)
+    {
+
     }
 }

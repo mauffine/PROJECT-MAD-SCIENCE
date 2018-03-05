@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 257903245388276424}
   - component: {fileID: 114790811683683480}
   - component: {fileID: 114000013321543804}
+  - component: {fileID: 114525389103629530}
   - component: {fileID: 70038449362652270}
   m_Layer: 8
   m_Name: Enemy
@@ -93,13 +94,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 500
   _mass: 1
-  _damage: 0
+  _damage: 50
   _speed: 1
-  _points: 0
+  _points: 10
   _getUpTicker: 0
   _getUpDelay: 2
+  _attackDelay: 1
+  _attackTicker: 0
   velocity: 0
   _left: 1
+  gate: {fileID: 0}
+--- !u!114 &114525389103629530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034500917159176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff498efc833dd874197d2832bcf97b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114790811683683480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +129,7 @@ MonoBehaviour:
   isGrabbed: 0
   isGrounded: 0
   canWalk: 1
+  canAttack: 0
   JointMaxForce: 8000
 --- !u!212 &212791923759864324
 SpriteRenderer:

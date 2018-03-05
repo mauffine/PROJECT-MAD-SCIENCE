@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour {
         {
             _spawnTicker -= Time.deltaTime;
         }
+        _spawnDelay -= Time.deltaTime / 60;
 	}
     private void SpawnUnit(bool left)
     {
