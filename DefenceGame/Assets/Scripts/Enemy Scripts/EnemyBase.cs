@@ -10,7 +10,7 @@ using UnityEngine;
 using Utilities;
 public class EnemyBase : MonoBehaviour
 {
-    protected EnemyUtilities _enemyUtilites = new EnemyUtilities();
+    protected EnemyUtilities _enemyUtilites;
     //floats
     [SerializeField]
     protected float _health = 500.0f;
@@ -27,12 +27,18 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     protected float _getUpDelay = 2;
     [SerializeField]
+    protected float _attackDelay = 1;
+    [SerializeField]
+    protected float _attackTicker;
+    [SerializeField]
     protected float velocity;
     //bools
     //Has the first collision occured?
     protected bool _firstcollision = false; 
     [SerializeField]
     public bool _left = true;
+
+    public GameObject gate;
 
     protected Controller _controller;
 
@@ -45,22 +51,41 @@ public class EnemyBase : MonoBehaviour
         _rb.mass = _mass;
         _controller = gameObject.GetComponent<Controller>();
         _getUpTicker = _getUpDelay;
+        _enemyUtilites = gameObject.GetComponent<EnemyUtilities>();
+        _attackTicker = _attackDelay;
     }
     virtual protected void Update()
     {
-        if (!_controller.isGrabbed && _controller.isGrounded)
+        if (!_controller.isGrabbed && _controller.isGrounded && _controller.canWalk)
             Move();
+        else if (!_controller.isGrabbed && _controller.isGrounded && _controller.canAttack)
+        {
+            if (_attackTicker >= 0)
+                _attackTicker -= Time.deltaTime;
+            else
+            {
+                _attackTicker = _attackDelay;
+                AttackGate(gate, _damage);
+            }
+        }
+        else if (!_controller.isGrabbed && _controller.isGrounded && !_controller.canWalk)
+            _controller.canWalk = CheckGetUp();
+        
         velocity = _rb.velocity.magnitude;
+        
     }
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (!collision.collider.CompareTag(this.tag))
+        if (!collision.collider.CompareTag(this.tag)
+            && (collision.collider.CompareTag("Lane1")
+                || collision.collider.CompareTag("Lane2")
+                || collision.collider.CompareTag("Lane3")))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
-            //Initial collision with ground has occured
-            if (_firstcollision) 
+        //Initial collision with ground has occured
+        if (_firstcollision) 
         {
             _health -= _enemyUtilites.CalcDamage(collision);
         }
@@ -101,5 +126,19 @@ public class EnemyBase : MonoBehaviour
             return true;
         }
         return false;
+    }
+    protected void AttackGate(GameObject gate, float damage)
+    {
+        gate.GetComponent<Gate>().TakeDamage(damage);
+    }
+    public void StartAttacking(GameObject gate)
+    {
+        _controller.canAttack = true;
+        _controller.canWalk = false;
+        this.gate = gate;
+    }
+    public void StopAttacking()
+    {
+        _controller.canAttack = false;
     }
 }
