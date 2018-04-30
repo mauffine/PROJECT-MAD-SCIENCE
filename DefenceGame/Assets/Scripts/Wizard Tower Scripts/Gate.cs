@@ -7,8 +7,24 @@ public class Gate : MonoBehaviour {
     private float _health = 200;
     [SerializeField]
     GameObject gate;
-	// Use this for initialization
-	void Start () {
+
+    [SerializeField]
+    private Sprite GateLvl1;
+    [SerializeField]
+    private Sprite GateLvl2;
+    [SerializeField]
+    private Sprite GateLvl3;
+
+    [SerializeField]
+    private Sprite HalfHealth;
+    [SerializeField]
+    private Sprite QuaterHealth;
+
+    [SerializeField]
+    private Sprite GateLvl1Broken;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

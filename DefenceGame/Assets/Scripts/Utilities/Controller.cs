@@ -34,10 +34,9 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        string layerName = LayerMask.LayerToName(9);
         //Update the mouse position
         MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, .5f, 9);
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Platform"));
         if (hit.collider != null && hit.collider.CompareTag(gameObject.tag))
         {
             isGrounded = true;
