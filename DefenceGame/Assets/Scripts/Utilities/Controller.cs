@@ -1,10 +1,4 @@
-﻿/* 
- * This script was written by John Ikonomou
- * Initial Creation Date: 4/8/17
- * Brief: Script used to allow player to manipulate physics objects (eg. Throw, Hold, Drop)
- * Unity Exposed Variables:
- *      JointMaxForce = This will set the maximum force used to reach the target (Mouse).
- */
+﻿
 
 using System.Collections;
 using System.Collections.Generic;
@@ -17,35 +11,41 @@ public class Controller : MonoBehaviour
     public bool isGrabbed = false;
     public bool isGrounded = false;
     public bool canWalk = true;
-    public bool canAttack = false;
     //Mouse position vectors
     private Vector2 MousePositionWorldSpace;
     //TargetJoint.
     private TargetJoint2D TG = null;
     public float JointMaxForce = 8000;
-    private Vector2 moveCameraPos;
+    private Animator _animator;
+
+    [SerializeField]
+    private float rayLen;
+    [SerializeField]
+    private float rayYPos;
     // Update is called once per frame
     private void Start()
     {
         TG = GetComponent<TargetJoint2D>();
         TG.maxForce = JointMaxForce;
         TG.enabled = false;
+        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         //Update the mouse position
         MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Platform"));
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos),
+            Vector2.down, rayLen, LayerMask.GetMask("Platform"));
         if (hit.collider != null && hit.collider.CompareTag(gameObject.tag))
         {
             isGrounded = true;
-            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.green, .25f, true);
+            Debug.DrawRay(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos), Vector2.down * rayLen, Color.green);
         }
         else
         {
             isGrounded = false;
-            Debug.DrawRay(gameObject.transform.position, Vector2.down, Color.red, .25f, true);
+            Debug.DrawRay(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos), Vector2.down * rayLen, Color.red);
         }
         //if(Input.touchCount > 0)
         //{
@@ -80,6 +80,7 @@ public class Controller : MonoBehaviour
             canWalk = false;
             TG.enabled = true;
             TG.anchor = MousePositionWorldSpace - (Vector2)transform.position + Vector2.up * 2f;
+            _animator.SetBool("Falling", true);
         }
     }
 
@@ -100,9 +101,5 @@ public class Controller : MonoBehaviour
     private void OnMouseExit()
     {
         isOver = false;
-    }
-    void MoveCamera(Vector2 moveCaermaPos)
-    {
-
     }
 }

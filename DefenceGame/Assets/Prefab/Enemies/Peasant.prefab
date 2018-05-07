@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4476354283360972}
   - component: {fileID: 95802136661304384}
+  - component: {fileID: 114566667737848534}
   m_Layer: 8
   m_Name: Peasant
   m_TagString: Lane1
@@ -468,7 +469,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147999433052372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.331, y: -2.318, z: 0}
+  m_LocalPosition: {x: -5.15, y: -1.87, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4476354283360972}
@@ -817,7 +818,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4793377, y: -0.17990208}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.4804192, y: 5.6233845}
   m_Direction: 0
 --- !u!95 &95473871778579004
@@ -893,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.9850144
+  m_Length: 0.98501396
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4114557542429810}
   m_AttachedIK: {fileID: 0}
@@ -925,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.069025
+  m_Length: 1.0690255
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4920537201610560}
   m_AttachedIK: {fileID: 0}
@@ -978,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.9189595
+  m_Length: 0.9189597
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4666012381218414}
   m_AttachedIK: {fileID: 0}
@@ -1070,7 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.7111135
+  m_Length: 0.7111141
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4072356192590816}
   m_AttachedIK: {fileID: 0}
@@ -1086,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.8180443
+  m_Length: 0.8180433
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4894106435311504}
   m_AttachedIK: {fileID: 0}
@@ -1110,6 +1111,17 @@ MonoBehaviour:
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4181083766488684}
+--- !u!114 &114566667737848534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059744551659446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3306313f270e34da5931a6e334eeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114619433872593670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1133,6 +1145,7 @@ MonoBehaviour:
   velocity: 0
   _left: 1
   gate: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!114 &114641504701598736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1167,8 +1180,9 @@ MonoBehaviour:
   isGrabbed: 0
   isGrounded: 0
   canWalk: 1
-  canAttack: 0
   JointMaxForce: 8000
+  rayLen: 0.15
+  rayYPos: -0.6
 --- !u!114 &114722882008460154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1202,7 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.84442896
+  m_Length: 0.8444287
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4797371525376090}
   m_AttachedIK: {fileID: 0}
@@ -1253,7 +1267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 2.1545596
+  m_Length: 2.1545594
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4181083766488684}
   m_AttachedIK: {fileID: 0}
@@ -1625,7 +1639,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: -10.331, y: -2.318}
+  m_Target: {x: -5.15, y: -1.87}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
