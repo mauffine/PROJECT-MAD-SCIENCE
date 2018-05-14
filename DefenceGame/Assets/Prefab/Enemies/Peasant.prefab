@@ -1181,8 +1181,8 @@ MonoBehaviour:
   isGrounded: 0
   canWalk: 1
   JointMaxForce: 8000
-  rayLen: 0.15
-  rayYPos: -0.6
+  rayLen: 0.32
+  rayYPos: -0.7
 --- !u!114 &114722882008460154
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
     private float rayLen;
     [SerializeField]
     private float rayYPos;
+    
     // Update is called once per frame
     private void Start()
     {
@@ -35,18 +36,19 @@ public class Controller : MonoBehaviour
     {
         //Update the mouse position
         MousePositionWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos),
-            Vector2.down, rayLen, LayerMask.GetMask("Platform"));
+        RaycastHit2D hit = Physics2D.Raycast(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(0,rayYPos) + transform.position,
+            Vector2.down, rayLen, LayerMask.GetMask("Platform"),transform.position.z, transform.position.z);
         if (hit.collider != null && hit.collider.CompareTag(gameObject.tag))
         {
             isGrounded = true;
-            Debug.DrawRay(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos), Vector2.down * rayLen, Color.green);
+            Debug.DrawRay(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(0, rayYPos) + transform.position, Vector2.down * rayLen, Color.green);
         }
         else
         {
             isGrounded = false;
-            Debug.DrawRay(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + rayYPos), Vector2.down * rayLen, Color.red);
+            Debug.DrawRay(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(0, rayYPos) + transform.position, Vector2.down * rayLen, Color.red);
         }
+        
         //if(Input.touchCount > 0)
         //{
         //    if(Input.GetTouch(0).phase == TouchPhase.Began)
@@ -101,5 +103,9 @@ public class Controller : MonoBehaviour
     private void OnMouseExit()
     {
         isOver = false;
+    }
+    public Vector2 RotateVector2(Vector2 v, float degrees)
+    {
+        return Quaternion.Euler(0, 0, degrees) * v;
     }
 }

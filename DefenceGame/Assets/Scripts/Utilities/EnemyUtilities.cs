@@ -32,9 +32,6 @@ namespace Utilities
         {
             return Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity) * 15.0f;
         }
-        //TODO: finish this so I can have the Villager stand properly
-        public float RotateVector2(Vector2 vector, float Radians)
-
     }
 }
 
