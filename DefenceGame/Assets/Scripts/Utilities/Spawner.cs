@@ -21,7 +21,8 @@ public class Spawner : MonoBehaviour {
     //Indicates whether it's on the left side
     [SerializeField]
     private bool _left = true;
-
+    [SerializeField]
+    GameObject gate;
 	// Use this for initialization
 	void Start () {
 		
@@ -42,9 +43,11 @@ public class Spawner : MonoBehaviour {
 	}
     private void SpawnUnit(bool left)
     {
-        var spawnedEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+        float random = UnityEngine.Random.Range(0, 3);
+        var spawnedEnemy = Instantiate(_enemyPrefab, new Vector3(transform.position.x, transform.position.y, random), Quaternion.identity);
         spawnedEnemy.GetComponent<EnemyBase>()._left = left;
-        _lane = (lane)UnityEngine.Random.Range(0, 3);
+        spawnedEnemy.GetComponent<EnemyBase>().gate = gate;
+        _lane = (lane)random;
         spawnedEnemy.tag = Enum.GetName(typeof(lane), _lane);
     }
 }
