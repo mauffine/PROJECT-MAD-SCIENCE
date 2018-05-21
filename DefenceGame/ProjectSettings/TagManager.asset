@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Lane1
   - Lane2
-  - Lan3
+  - Lane3
+  - GateTrigger
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - Enemy
   - Platform
-  - 
-  - 
+  - GateTrigger
+  - Raycast
   - 
   - 
   - 
