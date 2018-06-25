@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _scoreText.text = "Score: " + Scorekeeper._score;
-        _fundsText.text = "Funds: " + Scorekeeper._funds;
+        _scoreText.text = Scorekeeper._score.ToString();
+        _fundsText.text = Scorekeeper._funds.ToString();
 	}
 }

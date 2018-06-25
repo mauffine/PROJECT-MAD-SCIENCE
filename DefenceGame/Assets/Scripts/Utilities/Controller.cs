@@ -1,5 +1,4 @@
-﻿
-
+﻿//Use this Exclusively for phyisics interactions and player interactions
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +21,11 @@ public class Controller : MonoBehaviour
     private float rayLen;
     [SerializeField]
     private float rayYPos;
-    
+
+    [SerializeField]
+    GameObject DropShadowOriginal;
+
+    public GameObject _dropshadow;
     // Update is called once per frame
     private void Start()
     {
@@ -31,7 +34,11 @@ public class Controller : MonoBehaviour
         TG.enabled = false;
         _animator = gameObject.GetComponentInChildren<Animator>();
     }
-
+    private void Awake()
+    {
+        _dropshadow = Instantiate(DropShadowOriginal, transform.position, Quaternion.identity);
+        _dropshadow.transform.localScale = transform.localScale;
+    }
     void Update()
     {
         //Update the mouse position
@@ -48,26 +55,30 @@ public class Controller : MonoBehaviour
             isGrounded = false;
             Debug.DrawRay(Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(0, rayYPos) + transform.position, Vector2.down * rayLen, Color.red);
         }
-        
+        RaycastHit2D shadow = Physics2D.Raycast(transform.position ,Vector2.down, Mathf.Infinity, LayerMask.GetMask("Platform"), transform.position.z, transform.position.z);
+        if (shadow.collider != null && shadow.collider.CompareTag(gameObject.tag))
+        {
+            _dropshadow.transform.position = new Vector2(transform.position.x, transform.position.y - shadow.distance);
+        }
         //if(Input.touchCount > 0)
         //{
         //    if(Input.GetTouch(0).phase == TouchPhase.Began)
         //    {
-         
-        //    }
-        //    if (Input.GetTouch(0).phase == TouchPhase.Moved)
-        //    {
 
-        //    }
-        //    if (Input.GetTouch(0).phase == TouchPhase.Ended)
-        //    {
+            //    }
+            //    if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            //    {
 
-        //    }
-        //}
+            //    }
+            //    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            //    {
+
+            //    }
+            //}
 
 
 
-        if (isGrabbed)
+            if (isGrabbed)
         {
             //Set the targetjoint's target
             TG.target = MousePositionWorldSpace;

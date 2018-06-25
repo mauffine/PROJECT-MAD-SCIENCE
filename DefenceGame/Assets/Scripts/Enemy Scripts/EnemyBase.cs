@@ -46,6 +46,7 @@ public class EnemyBase : MonoBehaviour
     protected Rigidbody2D _rb;
     [SerializeField]
     protected Animator _animator;
+
     // Use this for initialization
     protected void Start()
     {
@@ -95,6 +96,7 @@ public class EnemyBase : MonoBehaviour
     {
         Scorekeeper._score += (uint)_points;
         Scorekeeper._funds += (uint)_points;
+        Destroy(_controller._dropshadow);
         Destroy(gameObject);
     }
     protected void Move()

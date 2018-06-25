@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
     [SerializeField]
     private GameObject _enemyPrefab;
     [SerializeField]
-    float _spawnDelay = 1;
+    float _spawnDelay = 5;
     [SerializeField]
     float _spawnTicker;
 
@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour {
         {
             _spawnTicker -= Time.deltaTime;
         }
-        _spawnDelay -= Time.deltaTime / 60;
+        //_spawnDelay -= Time.deltaTime / 60;
 	}
     private void SpawnUnit(bool left)
     {
